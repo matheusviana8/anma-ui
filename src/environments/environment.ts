@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:8080'
-  //apiUrl: 'https://anma.herokuapp.com'
+  //apiUrl: 'http://localhost:8080'
+  apiUrl: 'https://anma-api.herokuapp.com'
 };
 
 /*

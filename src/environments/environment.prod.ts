@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://anma.herokuapp.com',
+  apiUrl: 'https://anma-api.herokuapp.com',
 
 };
