@@ -27,13 +27,17 @@
 
 </div> -->
 <div class="container" style="max-width: 400px; margin: auto">
+  <div class="loading-indicator" *ngIf="showLoader">
+    <p-progressSpinner></p-progressSpinner>
+  </div>
 <div class="login-page">
   <div class="form">
     <form autocomplete="off" #f="ngForm" class="login-form">
       <div class="ui-g ui-fluid">
 
         <div class="ui-g-12">
-          <h3>Login</h3>
+          <!-- <h3>Login</h3> -->
+          <img src="assets/logo.png" style="width: 200px;height: 150px;">
         </div>
 
         <div class="ui-g-12">

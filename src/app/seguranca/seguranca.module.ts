@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { JwtModule } from '@auth0/angular-jwt';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
+import {ProgressSpinnerModule} from 'primeng/progressspinner';
 
 import { AuthGuard } from './auth.guard';
 import { LogoutService } from './logout.service';
@@ -30,6 +31,7 @@ export function tokenGetter() {
     }),
     InputTextModule,
     ButtonModule,
+    ProgressSpinnerModule,
 
     SegurancaRoutingModule
   ],

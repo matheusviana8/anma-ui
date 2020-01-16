@@ -11,6 +11,8 @@ import { AuthService } from './../auth.service';
 })
 export class LoginFormComponent {
 
+  showLoader = false;
+
   constructor(
     private auth: AuthService,
     private errorHandler: ErrorHandlerService,
@@ -18,11 +20,14 @@ export class LoginFormComponent {
   ) { }
 
   login(usuario: string, senha: string) {
+    this.showLoader = true;
     this.auth.login(usuario, senha)
       .then(() => {
-        this.router.navigate(['/clientes']);
+        this.showLoader = true;
+        this.router.navigate(['/lancamentos']);
       })
       .catch(erro => {
+        this.showLoader = true;
         this.errorHandler.handle(erro);
       });
   }
