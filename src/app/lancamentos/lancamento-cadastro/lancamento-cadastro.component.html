@@ -1,3 +1,89 @@
-<p>
-  lancamento-cadastro works!
-</p>
+<div class="container">
+  <!-- <form #f="ngForm" autocomplete="off" (ngSubmit)="salvar(f)"> -->
+  <form autocomplete="off" (ngSubmit)="salvar()" [formGroup]="formulario">
+    <p-panel>
+      <p-header>
+          <div class="p-col-12" style="font-size:16px;margin-top:5px;">
+            {{ editando ? 'Edição de' : 'Novo' }} Lançamento
+          </div>
+      </p-header>
+
+      <div class="ui-g">
+          <!-- <div class="ui-g-6 ui-md-2 ui-fluid">
+              <label>Código</label>
+              <input pInputText type="text" name="id" [disabled]="true"
+          formControlName="id">
+            </div> -->
+            <div class="ui-g-12">
+              <p-selectButton name="tipo" [options]="tipos"
+                formControlName="tipo"></p-selectButton>
+            </div>
+
+            <div class="ui-g-6 ui-md-3 ui-fluid">
+              <label>Vencimento</label>
+              <p-calendar name="vencimento" dateFormat="dd/mm/yy"
+                [inline]="false" [readonlyInput]="false" [showIcon]="false"
+                formControlName="dataVencimento"></p-calendar>
+
+              <app-message [control]="formulario.get('dataVencimento')" error="required"
+                text="Informe uma data de vencimento"></app-message>
+            </div>
+
+            <div class="ui-g-6 ui-md-3 ui-fluid">
+              <label>{{ formulario.get('tipo').value === 'RECEITA' ? 'Recebimento' : 'Pagamento' }}</label>
+              <p-calendar dateFormat="dd/mm/yy" name="dataPagamento"
+                formControlName="dataPagamento"></p-calendar>
+            </div>
+
+            <div class="ui-g-12 ui-md-9 ui-fluid">
+              <label>Descrição</label>
+              <input pInputText type="text" name="descricao"
+                formControlName="descricao">
+
+              <app-message [control]="formulario.get('descricao')" error="obrigatoriedade"
+                text="Informe a descrição"></app-message>
+              <app-message [control]="formulario.get('descricao')" error="tamanhoMinimo"
+                text="Mínimo de {{ formulario.get('descricao').errors?.tamanhoMinimo?.tamanho }} caracteres"></app-message>
+            </div>
+
+            <div class="ui-g-12 ui-md-3 ui-fluid">
+              <label>Valor</label>
+              <input pInputText type="text" name="valor" placeholder="0,00"
+                currencyMask [options]="{ prefix: '', thousands: '.', decimal: ',', allowNegative: false }"
+                formControlName="valor">
+            </div>
+
+            <div class="ui-g-12 ui-md-6 ui-fluid" formGroupName="categoria">
+              <label>Categoria</label>
+              <p-dropdown name="categoria" [options]="categorias"
+                placeholder="Selecione" formControlName="id">
+              </p-dropdown>
+            </div>
+
+            <div class="ui-g-12 ui-md-6 ui-fluid" formGroupName="cliente">
+              <label>Cliente</label>
+              <p-dropdown name="cliente" [options]="clientes" placeholder="Selecione"
+                [filter]="true"
+                formControlName="id"></p-dropdown>
+            </div>
+
+            <div class="ui-g-12 ui-fluid">
+              <label>Observação</label>
+              <textarea pInputTextarea rows="3" name="observacao"
+                formControlName="observacao"></textarea>
+            </div>
+
+      </div>
+      <p-footer>
+          <button pButton type="submit" icon="pi pi-save" label="Salvar"  [disabled]="formulario.invalid"
+           class="ui-button-success" style="margin-right: .25em" ></button>
+        <button pButton type="button" label="Novo" class="ui-button-info" style="margin-right: .25em"
+          (click)="novo()" style="margin-right: .25em"></button>
+        <a routerLink="/lancamentos" >Voltar para a pesquisa</a>
+      </p-footer>
+  </p-panel>
+  </form>
+  </div>
+
+
+

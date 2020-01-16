@@ -21,11 +21,11 @@ export class Cliente {
 }
 
 export class Categoria {
-  codigo: number;
+  id: number;
 }
 
 export class Lancamento {
-  codigo: number;
+  id: number;
   tipo = 'RECEITA';
   descricao: string;
   dataVencimento: Date;

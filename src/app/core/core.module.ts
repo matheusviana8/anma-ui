@@ -1,3 +1,4 @@
+import { CategoriaService } from './../categorias/categoria.service';
 import { Title } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
@@ -54,6 +55,7 @@ registerLocaleData(localePt);
     ClienteService,
     ProdutoService,
     GrupoService,
+    CategoriaService,
     ToastyService,
     ConfirmationService,
     MessageService,

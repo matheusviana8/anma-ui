@@ -67,7 +67,13 @@ export class ClienteService {
     return this.http.delete(`${this.clientesUrl}/${id}`)
       .toPromise()
       .then(() => null);
-  
+
+  }
+
+  listarTodas(): Promise<any> {
+    return this.http.get<any>(this.clientesUrl)
+      .toPromise()
+      .then(response => response.content);
   }
 
   adicionar(cliente: Cliente): Promise<Cliente> {
