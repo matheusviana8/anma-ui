@@ -11,6 +11,10 @@
             <label>Código</label>
             <input pInputText type="text" [disabled]="true" [(ngModel)]="cliente.id" name="id">
           </div>
+          <div class="ui-g-12 ui-md-3 ui-fluid">
+            <label>Situação</label><br>
+            <p-inputSwitch [(ngModel)]="cliente.ativo" name="ativo"></p-inputSwitch>
+          </div>
           <div class="ui-g-6 ui-md-5 ui-fluid">
               <label>Tipo</label><br>
               <p-dropdown [options]="tipos" placeholder="Selecione o tipo" [(ngModel)]="cliente.tipo" id="tipo" name="tipo"
