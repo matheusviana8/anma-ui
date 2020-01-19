@@ -9,6 +9,7 @@ import { MoneyHttp } from '../seguranca/money-http';
 
 export class LancamentoFiltro {
   descricao: string;
+  tipo: string;
   dataVencimentoInicio: Date;
   dataVencimentoFim: Date;
   pagina = 0;
@@ -38,6 +39,10 @@ export class LancamentoService {
 
     if (filtro.descricao) {
       params = params.append('descricao', filtro.descricao);
+    }
+
+    if (filtro.tipo) {
+      params = params.append('tipo', filtro.tipo);
     }
 
     if (filtro.dataVencimentoInicio) {

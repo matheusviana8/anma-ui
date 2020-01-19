@@ -15,6 +15,10 @@ import { LancamentoService, LancamentoFiltro } from './../lancamento.service';
 })
 export class LancamentosPesquisaComponent implements OnInit {
 
+  tipos = [
+    { label: 'Receita', value: 'RECEITA' },
+    { label: 'Despesa', value: 'DESPESA' },
+  ];
   totalRegistros = 0;
   valorTotal = 0;
   filtro = new LancamentoFiltro();
