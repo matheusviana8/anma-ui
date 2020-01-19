@@ -1,3 +1,5 @@
+import { DashboardService } from './../dashboard/dashboard.service';
+import { RelatoriosService } from './../relatorios/relatorios.service';
 import { CategoriaService } from './../categorias/categoria.service';
 import { Title } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
@@ -5,6 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule, LOCALE_ID } from '@angular/core';
 import { CommonModule, registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
+
 
 import { LancamentoService } from './../lancamentos/lancamento.service';
 import { ProdutoService } from './../produtos/produto.service';
@@ -51,6 +54,8 @@ registerLocaleData(localePt);
     AuthService,
     MoneyHttp,
 
+    DashboardService,
+    RelatoriosService,
     LancamentoService,
     ClienteService,
     ProdutoService,

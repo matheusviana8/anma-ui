@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { RelatoriosPedidosComponent } from './relatorios-pedidos/relatorios-pedidos.component';
 import { AuthGuard } from '../seguranca/auth.guard';
+import { RelatorioLancamentosComponent } from './relatorio-lancamentos/relatorio-lancamentos.component';
 
 const routes: Routes = [
   {
@@ -10,6 +11,12 @@ const routes: Routes = [
     component: RelatoriosPedidosComponent,
     canActivate: [ AuthGuard ],
     data: { roles: ['ROLE_PESQUISAR_PEDIDO']}
+  },
+  {
+    path: 'lancamentos',
+    component: RelatorioLancamentosComponent,
+    canActivate: [ AuthGuard ],
+    data: { roles: ['ROLE_PESQUISAR_LANCAMENTO'] }
   }
 ];
 

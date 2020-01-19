@@ -12,6 +12,9 @@
     <li class="navbar-usuario">{{ auth.jwtPayload?.nome }}</li>
 
     <li class="navbar-menuitem" routerLinkActive="ativo"
+      *ngIf="auth.temPermissao('ROLE_PESQUISAR_LANCAMENTO')"><a routerLink="/dashboard" (click)="exibindoMenu = !exibindoMenu">Dashboard</a></li>
+
+    <li class="navbar-menuitem" routerLinkActive="ativo"
       *ngIf="auth.temPermissao('ROLE_PESQUISAR_CATEGORIA')"><a routerLink="/categorias" (click)="exibindoMenu = !exibindoMenu">Categorias</a></li>
 
     <li class="navbar-menuitem" routerLinkActive="ativo"

@@ -24,7 +24,7 @@ export class LoginFormComponent {
     this.auth.login(usuario, senha)
       .then(() => {
         this.showLoader = true;
-        this.router.navigate(['/lancamentos']);
+        this.router.navigate(['/dashboard']);
       })
       .catch(erro => {
         this.showLoader = true;
