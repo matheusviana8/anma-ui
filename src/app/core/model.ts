@@ -22,6 +22,8 @@ export class Cliente {
 
 export class Categoria {
   id: number;
+  nome: string;
+  tipo: string;
 }
 
 export class Lancamento {
@@ -30,6 +32,7 @@ export class Lancamento {
   descricao: string;
   dataVencimento: Date;
   dataPagamento: Date;
+  pago: boolean;
   valor: number;
   observacao: string;
   cliente = new Cliente();
@@ -81,9 +84,9 @@ export enum FormaPagamento{
 }
 
 export enum StatusPedido{
-    ORCAMENTO = "Orçamento",
-	EMITIDO = "Emitido",
-	CANCELADO = "Cancelado",
+  ORCAMENTO = "Orçamento",
+  EMITIDO = "Emitido",
+  CANCELADO = "Cancelado",
 }
 
 export class Grupo {

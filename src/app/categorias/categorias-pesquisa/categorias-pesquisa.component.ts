@@ -6,22 +6,23 @@ import { MessageService } from 'primeng/components/common/messageservice';
 
 import { AuthService } from './../../seguranca/auth.service';
 import { ErrorHandlerService } from './../../core/error-handler.service';
-import { ProdutoService, ProdutoFiltro } from './../produto.service';
+import { CategoriaService, CategoriaFiltro } from './../categoria.service';
 
 @Component({
-  selector: 'app-produtos-pesquisa',
-  templateUrl: './produtos-pesquisa.component.html',
-  styleUrls: ['./produtos-pesquisa.component.css']
+  selector: 'app-categorias-pesquisa',
+  templateUrl: './categorias-pesquisa.component.html',
+  styleUrls: ['./categorias-pesquisa.component.css']
 })
-export class ProdutosPesquisaComponent implements OnInit {
+export class CategoriasPesquisaComponent implements OnInit {
 
   totalRegistros = 0;
-  filtro = new ProdutoFiltro();
-  produtos = [];
+  filtro = new CategoriaFiltro();
+  categorias = [];
+
   @ViewChild('tabela') grid;
 
   constructor(
-    private produtoService: ProdutoService,
+    private categoriaService: CategoriaService,
     private auth: AuthService,
     private errorHandler: ErrorHandlerService,
     private messageService: MessageService,
@@ -30,44 +31,41 @@ export class ProdutosPesquisaComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.title.setTitle('Pesquisa de Produtos');
+    this.title.setTitle('Pesquisa de Categorias');
   }
 
   pesquisar(pagina = 0) {
     this.filtro.pagina = pagina;
-
-    this.produtoService.pesquisar(this.filtro)
+    //console.log('pesquisar:' + pagina);
+    this.categoriaService.pesquisar(this.filtro)
       .then(resultado => {
         this.totalRegistros = resultado.total;
-        this.produtos = resultado.produtos;
+        this.categorias = resultado.categorias;
       })
       .catch(erro => this.errorHandler.handle(erro));
   }
 
   aoMudarPagina(event: LazyLoadEvent) {
+    //console.log('ao mudar pag');
     const pagina = event.first / event.rows;
     this.pesquisar(pagina);
   }
 
-  confirmarExclusao(produto: any) {
+  confirmarExclusao(categoria: any) {
     this.confirmation.confirm({
       message: 'Tem certeza que deseja excluir?',
       accept: () => {
-        this.excluir(produto);
+        this.excluir(categoria);
       }
     });
   }
 
-  excluir(produto: any) {
-    this.produtoService.excluir(produto.id)
+  excluir(categoria: any) {
+    this.categoriaService.excluir(categoria.id)
       .then(() => {
-        if (this.grid.first === 0) {
-          this.pesquisar();
-        } else {
-          this.grid.first = 0;
-        }
-
-        this.messageService.add({ severity: 'success', detail: 'Produto excluído com sucesso!' });
+        this.pesquisar();
+        this.grid.first = 0;
+        this.messageService.add({ severity: 'success', detail: 'Categoria excluída com sucesso!' });
       })
       .catch(erro => this.errorHandler.handle(erro));
   }

@@ -6,7 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { MessageService } from 'primeng/components/common/messageservice';
 
 import { ErrorHandlerService } from './../../core/error-handler.service';
-import { CategoriaService } from './../../categorias/categoria.service';
+import { CategoriaService, CategoriaFiltro } from './../../categorias/categoria.service';
 import { ClienteService } from './../../clientes/cliente.service';
 import { Lancamento } from './../../core/model';
 import { LancamentoService } from './../lancamento.service';
@@ -16,6 +16,8 @@ import { LancamentoService } from './../lancamento.service';
   templateUrl: './lancamento-cadastro.component.html',
   styleUrls: ['./lancamento-cadastro.component.css']
 })
+
+
 export class LancamentoCadastroComponent implements OnInit {
 
   tipos = [
@@ -26,6 +28,7 @@ export class LancamentoCadastroComponent implements OnInit {
   categorias = [];
   clientes = [];
   lancamento = new Lancamento();
+  filtroCategoria = new CategoriaFiltro();
   formulario: FormGroup;
   uploadEmAndamento = false;
 
@@ -61,6 +64,7 @@ export class LancamentoCadastroComponent implements OnInit {
       tipo: [ 'RECEITA', Validators.required ],
       dataVencimento: [ null, Validators.required ],
       dataPagamento: [],
+      pago: [],
       descricao: [null, [ this.validarObrigatoriedade, this.validarTamanhoMinimo(5) ]],
       valor: [ null, Validators.required ],
       cliente: this.formBuilder.group({
@@ -97,6 +101,7 @@ export class LancamentoCadastroComponent implements OnInit {
         // this.lancamento = lancamento;
         this.formulario.patchValue(lancamento);
         this.atualizarTituloEdicao();
+        this.carregarCategorias();
       })
       .catch(erro => this.errorHandler.handle(erro));
   }
@@ -133,11 +138,27 @@ export class LancamentoCadastroComponent implements OnInit {
       .catch(erro => this.errorHandler.handle(erro));
   }
 
+  // carregarCategorias() {
+  //   return this.categoriaService.listarTodas()
+  //     .then(categorias => {
+  //       this.categorias = categorias
+  //         .map(c => ({ label: c.nome, value: c.id }));
+  //     })
+  //     .catch(erro => this.errorHandler.handle(erro));
+  // }
+  onChangeCategorias(){
+    this.formulario.patchValue({
+      categoria: {
+        id: ''
+      }
+    });
+    this.carregarCategorias();
+  }
   carregarCategorias() {
-    return this.categoriaService.listarTodas()
+    this.filtroCategoria.tipo = this.formulario.value.tipo;
+    return this.categoriaService.pesquisar(this.filtroCategoria)
       .then(categorias => {
-        this.categorias = categorias
-          .map(c => ({ label: c.nome, value: c.id }));
+        this.categorias = categorias.categorias.map(c => ({ label: c.nome, value: c.id }));
       })
       .catch(erro => this.errorHandler.handle(erro));
   }

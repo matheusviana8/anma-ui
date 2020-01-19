@@ -16,6 +16,7 @@ import { LancamentoService, LancamentoFiltro } from './../lancamento.service';
 export class LancamentosPesquisaComponent implements OnInit {
 
   totalRegistros = 0;
+  valorTotal = 0;
   filtro = new LancamentoFiltro();
   lancamentos = [];
   @ViewChild('tabela') grid;

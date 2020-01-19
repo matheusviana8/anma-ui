@@ -14,6 +14,7 @@ import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { FileUploadModule } from 'primeng/fileupload';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { CheckboxModule } from 'primeng/checkbox';
 
 import { LancamentosRoutingModule } from './lancamentos-routing.module';
 import { SharedModule } from './../shared/shared.module';
@@ -39,6 +40,7 @@ import { PanelModule } from 'primeng/panel';
     CurrencyMaskModule,
     FileUploadModule,
     ProgressSpinnerModule,
+    CheckboxModule,
 
     SharedModule,
     LancamentosRoutingModule

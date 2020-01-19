@@ -49,16 +49,16 @@ export class GrupoService {
           grupos: grupos,
           total: response.totalElements
         };
-        
+
         return resultado;
       });
   }
-  
+
   excluir(id: number): Promise<void> {
     return this.http.delete(`${this.gruposUrl}/${id}`)
       .toPromise()
       .then(() => null);
-  
+
   }
 
   adicionar(grupo: Grupo): Promise<Grupo> {

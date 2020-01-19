@@ -33,10 +33,10 @@ export class GrupoCadastroComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private title: Title
-    
+
   ) { }
 
-  
+
 
   ngOnInit() {
     const idGrupo = this.route.snapshot.params['id'];

@@ -15,7 +15,7 @@
           formControlName="id">
             </div> -->
             <div class="ui-g-12">
-              <p-selectButton name="tipo" [options]="tipos"
+              <p-selectButton name="tipo" [options]="tipos" (onChange)="onChangeCategorias()"
                 formControlName="tipo"></p-selectButton>
             </div>
 
@@ -33,6 +33,12 @@
               <label>{{ formulario.get('tipo').value === 'RECEITA' ? 'Recebimento' : 'Pagamento' }}</label>
               <p-calendar dateFormat="dd/mm/yy" name="dataPagamento"
                 formControlName="dataPagamento"></p-calendar>
+            </div>
+
+            <div class="ui-g-6 ui-md-3 ui-fluid">
+              <br>
+              <p-checkbox formControlName="pago" binary="true" label="Pago"
+              ></p-checkbox>
             </div>
 
             <div class="ui-g-12 ui-md-9 ui-fluid">
