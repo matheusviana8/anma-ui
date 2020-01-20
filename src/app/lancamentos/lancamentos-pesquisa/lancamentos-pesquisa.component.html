@@ -38,7 +38,7 @@
       <p-table [value]="lancamentos" [responsive]="true"
           [paginator]="true" [rows]="filtro.itensPorPagina"
           [lazy]="true" [totalRecords]="totalRegistros"
-          (onLazyLoad)="aoMudarPagina($event)"
+          (onLazyLoad)="aoMudarPagina($event)" [loading]="loading"
           #tabela>
         <ng-template pTemplate="header">
           <tr>
