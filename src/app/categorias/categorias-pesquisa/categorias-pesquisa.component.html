@@ -6,9 +6,14 @@
     </p-header>
 
     <div class="ui-g">
-        <div class="ui-g-12 ui-fluid">
+        <div class="ui-g-12 ui-md-6 ui-fluid">
             <label>Código</label>
             <input pInputText type="text" name="id" [(ngModel)]="filtro.id">
+        </div>
+        <div class="ui-g-12 ui-md-6 ui-fluid">
+          <label>Tipo</label>
+          <p-dropdown [options]="tipos" name="tipo" [(ngModel)]="filtro.tipo"
+          placeholder="Selecione um Tipo" [showClear]="true"></p-dropdown>
         </div>
         <div class="ui-g-12 ui-fluid">
             <label>Nome</label>

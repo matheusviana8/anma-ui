@@ -15,6 +15,10 @@ import { CategoriaService, CategoriaFiltro } from './../categoria.service';
 })
 export class CategoriasPesquisaComponent implements OnInit {
 
+  tipos = [
+    { label: 'Receita', value: 'RECEITA' },
+    { label: 'Despesa', value: 'DESPESA' },
+  ];
   totalRegistros = 0;
   filtro = new CategoriaFiltro();
   categorias = [];
