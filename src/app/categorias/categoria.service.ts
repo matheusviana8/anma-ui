@@ -59,6 +59,28 @@ export class CategoriaService {
       });
   }
 
+  listarPorTipo(tipo: string): Promise<any> {
+    let params = new HttpParams();
+
+    if (tipo) {
+      params = params.append('tipo', tipo);
+    }
+
+    return this.http.get<any>(`${this.categoriasUrl}`,
+        { params })
+      .toPromise()
+      .then(response => {
+        const categorias = response.content;
+
+        const resultado = {
+          categorias: categorias,
+          total: response.totalElements
+        };
+
+        return resultado;
+      });
+  }
+
   excluir(id: number): Promise<void> {
     return this.http.delete(`${this.categoriasUrl}/${id}`)
       .toPromise()

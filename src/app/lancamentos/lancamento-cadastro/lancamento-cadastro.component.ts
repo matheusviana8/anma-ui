@@ -156,7 +156,8 @@ export class LancamentoCadastroComponent implements OnInit {
   }
   carregarCategorias() {
     this.filtroCategoria.tipo = this.formulario.value.tipo;
-    return this.categoriaService.pesquisar(this.filtroCategoria)
+
+    return this.categoriaService.listarPorTipo(this.filtroCategoria.tipo)
       .then(categorias => {
         this.categorias = categorias.categorias.map(c => ({ label: c.nome, value: c.id }));
       })
