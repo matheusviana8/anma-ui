@@ -23,6 +23,7 @@ export class LancamentosPesquisaComponent implements OnInit {
   valorTotal = 0;
   filtro = new LancamentoFiltro();
   lancamentos = [];
+  loading = true;
   @ViewChild('tabela') grid;
 
   constructor(
@@ -39,12 +40,14 @@ export class LancamentosPesquisaComponent implements OnInit {
   }
 
   pesquisar(pagina = 0) {
+    this.loading = true;
     this.filtro.pagina = pagina;
 
     this.lancamentoService.pesquisar(this.filtro)
       .then(resultado => {
         this.totalRegistros = resultado.total;
         this.lancamentos = resultado.lancamentos;
+        this.loading = false;
       })
       .catch(erro => this.errorHandler.handle(erro));
   }

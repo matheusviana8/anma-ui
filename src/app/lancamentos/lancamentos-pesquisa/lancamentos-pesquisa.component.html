@@ -42,8 +42,9 @@
           #tabela>
         <ng-template pTemplate="header">
           <tr>
-            <th>Pessoa</th>
+            <th>Cliente</th>
             <th>Descrição</th>
+            <th>Categoria</th>
             <th class="col-data-header">Vencimento</th>
             <th class="col-data-header">Pagamento</th>
             <th class="col-valor-header">Valor</th>
@@ -55,6 +56,7 @@
           <tr>
             <td>{{ lancamento.cliente }}</td>
             <td>{{ lancamento.descricao }}</td>
+            <td>{{ lancamento.categoria }}</td>
             <td class="col-data">{{ lancamento.dataVencimento | date:'dd/MM/yyyy' }}</td>
             <td class="col-data">{{ lancamento.dataPagamento | date:'dd/MM/yyyy' }}</td>
             <td class="col-valor" [style.color]="lancamento.tipo === 'DESPESA' ? 'red' : 'blue'">
