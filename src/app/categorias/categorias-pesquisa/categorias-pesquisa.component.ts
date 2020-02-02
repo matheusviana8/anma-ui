@@ -23,8 +23,8 @@ export class CategoriasPesquisaComponent implements OnInit {
   filtro = new CategoriaFiltro();
   categorias = [];
 
- // @ViewChild('tabela') grid;
-  @ViewChild('tabela', {static: true}) grid: Table;
+  @ViewChild('tabela') grid;
+  //@ViewChild('tabela', {static: true}) grid: Table;
 
   constructor(
     private categoriaService: CategoriaService,
