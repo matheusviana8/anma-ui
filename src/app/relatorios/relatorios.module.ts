@@ -8,6 +8,7 @@ import { CalendarModule } from 'primeng/calendar';
 import { SharedModule } from './../shared/shared.module';
 import { RelatoriosRoutingModule } from './relatorios-routing.module';
 import { RelatorioLancamentosComponent } from './relatorio-lancamentos/relatorio-lancamentos.component';
+import { RelatorioLancamentosPorDataComponent } from './relatorio-lancamentos-por-data/relatorio-lancamentos-por-data.component';
 
 @NgModule({
   imports: [
@@ -21,7 +22,8 @@ import { RelatorioLancamentosComponent } from './relatorio-lancamentos/relatorio
   ],
   declarations: [
     RelatorioLancamentosComponent,
-    RelatoriosPedidosComponent
+    RelatoriosPedidosComponent,
+    RelatorioLancamentosPorDataComponent
   ]
 })
 export class RelatoriosModule { }

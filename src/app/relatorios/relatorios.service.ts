@@ -1,3 +1,4 @@
+import { LancamentoFiltro } from './../lancamentos/lancamento.service';
 import { Injectable } from '@angular/core';
 import { HttpParams } from '@angular/common/http';
 
@@ -22,6 +23,34 @@ export class RelatoriosService {
     params = params.set('fim', moment(fim).format('YYYY-MM-DD'));
 
     return this.http.get(`${this.lancamentosUrl}/relatorios/por-cliente`,
+        { params, responseType: 'blob' })
+        .toPromise()
+        .then(response => response);
+  }
+
+  relatorioLancamentosPorData(filtro: LancamentoFiltro) {
+    let params = new HttpParams();
+
+    if (filtro.descricao) {
+      params = params.append('descricao', filtro.descricao);
+    }
+
+    if (filtro.tipo) {
+      params = params.append('tipo', filtro.tipo);
+    }
+
+    if (filtro.dataVencimentoInicio) {
+      params = params.append('dataVencimentoDe',
+        moment(filtro.dataVencimentoInicio).format('YYYY-MM-DD'));
+    }
+
+    if (filtro.dataVencimentoFim) {
+      params = params.append('dataVencimentoAte',
+        moment(filtro.dataVencimentoFim).format('YYYY-MM-DD'));
+    }
+
+
+    return this.http.get(`${this.lancamentosUrl}/relatorios/por-data`,
         { params, responseType: 'blob' })
         .toPromise()
         .then(response => response);
