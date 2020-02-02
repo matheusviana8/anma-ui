@@ -23,7 +23,8 @@ export class CategoriasPesquisaComponent implements OnInit {
   filtro = new CategoriaFiltro();
   categorias = [];
 
-  @ViewChild('tabela') grid;
+ // @ViewChild('tabela') grid;
+  @ViewChild('tabela', {static: true}) grid: Table;
 
   constructor(
     private categoriaService: CategoriaService,
@@ -67,9 +68,15 @@ export class CategoriasPesquisaComponent implements OnInit {
   excluir(categoria: any) {
     this.categoriaService.excluir(categoria.id)
       .then(() => {
-        this.pesquisar();
-        this.grid.first = 0;
-        this.messageService.add({ severity: 'success', detail: 'Categoria excluída com sucesso!' });
+        //this.pesquisar();
+        //this.grid.first = 0;
+        //this.grid.reset();
+         if (this.grid.first === 0) {
+            this.pesquisar();
+         } else {
+            this.grid.first = 0;
+         }
+         this.messageService.add({ severity: 'success', detail: 'Categoria excluída com sucesso!' });
       })
       .catch(erro => this.errorHandler.handle(erro));
   }
