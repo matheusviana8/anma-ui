@@ -39,7 +39,7 @@ import { GrupoService } from './grupo.service';
     GruposRoutingModule
   ],
   declarations: [
-    GrupoCadastroComponent, GruposPesquisaComponent  
+    GrupoCadastroComponent, GruposPesquisaComponent
   ],
   providers: [
     GrupoService,

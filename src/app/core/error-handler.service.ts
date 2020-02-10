@@ -33,7 +33,6 @@ export class ErrorHandlerService {
 
       if (errorResponse.status === 400 && errorResponse.error.error === 'invalid_grant') {
         msg = 'Usuário ou senha inválida!';
-        
       }
 
       try {

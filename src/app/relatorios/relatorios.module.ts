@@ -9,6 +9,9 @@ import { SharedModule } from './../shared/shared.module';
 import { RelatoriosRoutingModule } from './relatorios-routing.module';
 import { RelatorioLancamentosComponent } from './relatorio-lancamentos/relatorio-lancamentos.component';
 import { RelatorioLancamentosPorDataComponent } from './relatorio-lancamentos-por-data/relatorio-lancamentos-por-data.component';
+import { PanelModule } from 'primeng/panel';
+import { DropdownModule } from 'primeng/dropdown';
+import { InputTextModule } from 'primeng/inputtext';
 
 @NgModule({
   imports: [
@@ -16,6 +19,9 @@ import { RelatorioLancamentosPorDataComponent } from './relatorio-lancamentos-po
     FormsModule,
 
     CalendarModule,
+    PanelModule,
+    DropdownModule,
+    InputTextModule,
 
     SharedModule,
     RelatoriosRoutingModule

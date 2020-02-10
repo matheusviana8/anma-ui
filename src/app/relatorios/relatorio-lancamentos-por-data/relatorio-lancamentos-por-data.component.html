@@ -1,27 +1,41 @@
 <div class="container">
-  <div class="ui-g">
-    <div class="ui-g-12">
-      <h1>Relatório de lançamentos por data</h1>
-    </div>
+  <form #f="ngForm" (ngSubmit)="gerar()">
+    <p-panel>
+      <p-header>
+        <div class="p-col-12" style="font-size:16px;margin-top:5px;">Relatório de lançamentos por data</div>
+      </p-header>
 
-    <form #f="ngForm" (ngSubmit)="gerar()">
-      <div class="ui-g-12">
-        <label>Vencimento</label>
-        <p-calendar dateFormat="dd/mm/yy" required
-          [inputStyle]="{ 'width': '95px'}"
-          [(ngModel)]="filtro.dataVencimentoInicio" name="vencimentoInicio"></p-calendar>
+      <div class="ui-g">
+        <div class="ui-g-12">
+          <label>Vencimento </label>
+          <p-calendar dateFormat="dd/mm/yy" required
+            [inputStyle]="{ 'width': '95px'}"
+            [(ngModel)]="filtro.dataVencimentoInicio" name="vencimentoInicio"></p-calendar>
 
-        <label>até</label>
+            <label> até </label>
 
-        <p-calendar dateFormat="dd/mm/yy" required
-          [inputStyle]="{ 'width': '95px'}"
-          [(ngModel)]="filtro.dataVencimentoFim" name="vencimentoFim"></p-calendar>
+            <p-calendar dateFormat="dd/mm/yy" required
+            [inputStyle]="{ 'width': '95px'}"
+            [(ngModel)]="filtro.dataVencimentoFim" name="vencimentoFim"></p-calendar>
+          </div>
+
+          <div class="ui-g-12 ui-fluid">
+            <label>Descrição</label>
+            <input pInputText type="text" name="descricao"
+            [(ngModel)]="filtro.descricao">
+          </div>
+
+          <div class="ui-g-12 ui-md-3 ui-fluid">
+            <label>Tipo</label>
+            <p-dropdown [options]="tipos" name="tipo" [(ngModel)]="filtro.tipo"
+              placeholder="Selecione um Tipo" [showClear]="true"></p-dropdown>
+          </div>
       </div>
 
-      <div class="ui-g-12">
-        <button pButton type="submit" label="Gerar"
-          [disabled]="f.invalid"></button>
-      </div>
-    </form>
-  </div>
+      <p-footer>
+          <button pButton type="submit" label="Gerar"
+            [disabled]="f.invalid"></button>
+      </p-footer>
+    </p-panel>
+  </form>
 </div>
