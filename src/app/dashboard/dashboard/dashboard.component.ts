@@ -45,7 +45,8 @@ export class DashboardComponent implements OnInit {
             {
               data: dados.map(dado => dado.total),
               backgroundColor: ['#FF9900', '#109618', '#990099', '#3B3EAC', '#0099C6',
-                                  '#DD4477', '#3366CC', '#DC3912']
+                                  '#DD4477', '#3366CC', '#DC3912', '#00FA9A' , '#BC8F8F',
+                                   '#FA8072', '#FFE4E1']
             }
           ]
         };

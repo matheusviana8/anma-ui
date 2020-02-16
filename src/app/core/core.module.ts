@@ -16,6 +16,7 @@ import { ConfirmationService } from 'primeng/api';
 import { MessageService } from 'primeng/components/common/messageservice';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { GrowlModule } from 'primeng/growl';
+import {SidebarModule} from 'primeng/sidebar';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
 import { AuthService } from './../seguranca/auth.service';
@@ -37,6 +38,7 @@ registerLocaleData(localePt);
 
     GrowlModule,
     ConfirmDialogModule,
+    SidebarModule,
   ],
   declarations: [
     NavbarComponent,
